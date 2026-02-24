@@ -1,0 +1,142 @@
+/* ===== GENERAL ===== */
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background-color: #F2F4F7;
+    color: #2E3A4D;
+}
+
+/* ===== NAVBAR PREMIUM ===== */
+
+.premium-navbar {
+    background-color: white;
+    border-bottom: 3px solid #1E73B8;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 60px;
+}
+
+.nav-logo {
+    height: 45px;
+}
+
+.nav-links a {
+    margin: 0 18px;
+    text-decoration: none;
+    color: #2E3A4D;
+    font-size: 14px;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #1E73B8;
+}
+
+.nav-system {
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    background-color: #2C8ED6;
+    border-radius: 50%;
+    margin-right: 6px;
+}
+
+/* ===== HERO ===== */
+
+.premium-hero {
+    text-align: center;
+    padding: 80px 20px 60px 20px;
+    background: linear-gradient(135deg, #1E73B8, #0F2B46);
+    color: white;
+}
+
+.premium-hero h1 {
+    margin: 0;
+    font-size: 38px;
+    font-weight: 600;
+}
+
+.premium-hero p {
+    margin-top: 12px;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* ===== ALERTS SECTION ===== */
+
+.premium-alerts {
+    padding: 60px 80px;
+}
+
+.premium-alerts h2 {
+    margin-bottom: 30px;
+    font-size: 22px;
+}
+
+.alerts-horizontal {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.alert-premium {
+    background-color: white;
+    flex: 1;
+    min-width: 280px;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    transition: 0.3s ease;
+}
+
+.alert-premium:hover {
+    transform: translateY(-6px);
+}
+
+.alert-top {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+
+.level {
+    font-weight: 600;
+}
+
+.date {
+    color: gray;
+}
+
+.high {
+    border-top: 4px solid #D62828;
+}
+
+.medium {
+    border-top: 4px solid #F4A261;
+}
+
+.low {
+    border-top: 4px solid #2C8ED6;
+}
+
+/* ===== FOOTER ===== */
+
+.premium-footer {
+    text-align: center;
+    padding: 20px;
+    background-color: white;
+    border-top: 1px solid #DDE3EA;
+    font-size: 13px;
+}

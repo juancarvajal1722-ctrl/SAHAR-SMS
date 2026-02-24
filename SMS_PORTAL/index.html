@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sahar Group | SMS Portal</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    background:#F4F6F9;
+    color:#1C1C1C;
+}
+
+.navbar{
+    position:fixed;
+    top:0;
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 80px;
+    background:rgba(255,255,255,0.95);
+    backdrop-filter:blur(8px);
+    box-shadow:0 4px 20px rgba(0,0,0,0.05);
+    z-index:1000;
+}
+
+.logo-container img{
+    height:70px;   /* MÁS GRANDE */
+    transition:0.3s;
+}
+
+.logo-container img:hover{
+    transform:scale(1.05);
+}
+
+.nav-links a{
+    margin-left:40px;
+    text-decoration:none;
+    font-weight:600;
+    color:#1F5FAF;
+    font-size:15px;
+    position:relative;
+    transition:0.3s;
+}
+
+.nav-links a::after{
+    content:"";
+    position:absolute;
+    width:0;
+    height:2px;
+    left:0;
+    bottom:-5px;
+    background:#1F5FAF;
+    transition:0.3s;
+}
+
+.nav-links a:hover::after{
+    width:100%;
+}
+
+/* HERO */
+.hero{
+    height:100vh;
+    background:linear-gradient(135deg, #1F5FAF, #2E86C1);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+    padding:20px;
+}
+
+.hero h1{
+    font-size:50px;
+    font-weight:700;
+    margin-bottom:20px;
+}
+
+.hero p{
+    font-size:18px;
+    max-width:700px;
+    margin-bottom:30px;
+    opacity:0.9;
+}
+
+.hero button{
+    padding:15px 35px;
+    border:none;
+    border-radius:30px;
+    background:white;
+    color:#1F5FAF;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+    box-shadow:0 8px 20px rgba(0,0,0,0.2);
+}
+
+.hero button:hover{
+    transform:translateY(-3px);
+}
+
+/* SECTION */
+.section{
+    padding:100px 80px;
+    text-align:center;
+}
+
+.section h2{
+    font-size:32px;
+    margin-bottom:50px;
+    color:#1F5FAF;
+}
+
+/* CARDS */
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:white;
+    padding:40px 30px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.05);
+    transition:0.4s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 15px 40px rgba(0,0,0,0.1);
+}
+
+.card h3{
+    color:#1F5FAF;
+    margin-bottom:15px;
+}
+
+.card p{
+    font-size:14px;
+    color:#555;
+}
+
+/* FOOTER */
+footer{
+    background:#1F5FAF;
+    color:white;
+    text-align:center;
+    padding:30px;
+    margin-top:50px;
+}
+
+footer p{
+    opacity:0.8;
+}
+
+.hero-video{
+    position:relative;
+    height:100vh;
+    width:100%;
+    overflow:hidden;
+}
+
+.bg-video{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    min-width:100%;
+    min-height:100%;
+    object-fit:cover;
+    z-index:1;
+}
+
+.overlay{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:linear-gradient(
+        rgba(10,25,60,0.85),
+        rgba(31,95,175,0.85)
+    );
+    z-index:2;
+}
+
+.hero-content{
+    position:relative;
+    z-index:3;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+    padding:20px;
+    animation:fadeUp 1.5s ease forwards;
+}
+
+.hero-logo{
+    width:280px;
+    margin-bottom:30px;
+}
+
+.hero-content h1{
+    font-size:48px;
+    font-weight:700;
+    margin-bottom:20px;
+}
+
+.hero-content p{
+    max-width:700px;
+    font-size:18px;
+    margin-bottom:35px;
+    opacity:0.9;
+}
+
+.hero-content button{
+    padding:15px 40px;
+    border-radius:50px;
+    border:2px solid white;
+    background:transparent;
+    color:white;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.4s;
+    backdrop-filter:blur(10px);
+}
+
+.hero-content button:hover{
+    background:white;
+    color:#1F5FAF;
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+/* ANIMATION */
+.fade-in{
+    opacity:0;
+    transform:translateY(30px);
+    transition:all 1s ease;
+}
+
+.fade-in.visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.sms-modules{
+    padding:100px 80px;
+    text-align:center;
+    background:#F4F6F9;
+}
+
+.sms-modules h2{
+    font-size:34px;
+    color:#1F5FAF;
+    margin-bottom:15px;
+}
+
+.sms-btn{
+    display:inline-block;
+    padding:12px 28px;
+    border-radius:30px;
+    background:#1F5FAF;
+    color:white;
+    text-decoration:none;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.sms-btn:hover{
+    background:#2E86C1;
+}
+
+.emergency-btn{
+    background:#C0392B;
+}
+
+.emergency-btn:hover{
+    background:#E74C3C;
+}
+.sms-intro{
+    margin-bottom:60px;
+    color:#555;
+}
+
+.sms-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.sms-card{
+    background:#f4f6f9;
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+    border:2px solid #1F5FAF; /* borde azul por defecto */
+    
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
+
+/* Para que el texto ocupe espacio flexible */
+.sms-card p{
+    flex-grow:1;
+}
+
+/* Empuja el botón hacia abajo */
+.sms-card .sms-btn{
+    margin-top:auto;
+}
+
+.sms-card{
+    box-shadow:0 8px 20px rgba(0,0,0,0.05);
+}
+
+/* Tarjeta de emergencia con borde rojo */
+.sms-card.emergency{
+    border:2px solid #C0392B;
+}
+.emergency{
+    border:2px solid #C0392B;
+}
+
+.sms-card.emergency h3{
+    white-space: nowrap;
+    font-size: 1.2rem;
+}   
+.emergency button{
+    background:#C0392B;
+}
+
+.sms-card{
+    display:flex;
+    flex-direction:column;
+    gap:15px; /* espacio uniforme entre todos los elementos */
+}
+
+.sms-card .sms-btn{
+    margin-top:auto;
+}
+
+/* Animación inicial */
+.sms-card{
+    opacity:0;
+    transform:translateY(20px);
+    animation:fadeUp 0.6s ease forwards;
+}
+
+/* Pequeño delay escalonado */
+.sms-card:nth-child(1){ animation-delay:0.1s; }
+.sms-card:nth-child(2){ animation-delay:0.2s; }
+.sms-card:nth-child(3){ animation-delay:0.3s; }
+.sms-card:nth-child(4){ animation-delay:0.4s; }
+
+@keyframes fadeUp{
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+.sms-card{
+    transition:0.3s ease;
+}
+
+.sms-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 12px 30px rgba(0,0,0,0.08);
+}
+.sms-btn{
+    transition:all 0.3s ease;
+}
+
+.sms-btn:hover{
+    transform:scale(1.05);
+}
+
+.emergency-btn{
+    animation:pulse 2.5s infinite;
+}
+
+@keyframes pulse{
+    0%{ box-shadow:0 0 0 0 rgba(192,57,43,0.4); }
+    70%{ box-shadow:0 0 0 10px rgba(192,57,43,0); }
+    100%{ box-shadow:0 0 0 0 rgba(192,57,43,0); }
+}
+.hidden-page{
+    display:none;
+    min-height:100vh;
+    padding:120px 60px;
+    background:#F4F6F9;
+}
+
+.sms-card.emergency h3{
+    white-space:nowrap;
+}
+
+@media (max-width:768px){
+    .sms-card.emergency h3{
+        white-space:normal;
+        text-align:center;
+    }
+}
+.page-container{
+    max-width:1100px;
+    margin:auto;
+    text-align:center;
+}
+
+.page-container h1{
+    font-size:40px;
+    color:#1F5FAF;
+    margin-bottom:25px;
+}
+
+.page-container p{
+    max-width:700px;
+    margin:0 auto 50px auto;
+    color:#555;
+}
+
+.sms-features{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+    margin-bottom:60px;
+}
+
+.feature-box{
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.05);
+}
+
+.primary-btn{
+    padding:15px 40px;
+    border:none;
+    border-radius:50px;
+    background:#1F5FAF;
+    color:white;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.primary-btn:hover{
+    background:#2E86C1;
+}
+
+.modules-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+    margin-bottom:60px;
+}
+
+.module-card{
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.05);
+    transition:0.3s;
+}
+
+.module-card:hover{
+    transform:translateY(-8px);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.bulletins-section{
+    padding:100px 80px;
+    background:white;
+    text-align:center;
+}
+
+.bulletins-section h2{
+    font-size:34px;
+    color:#1F5FAF;
+    margin-bottom:15px;
+}
+
+.bulletins-intro{
+    margin-bottom:60px;
+    color:#555;
+}
+
+.bulletins-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+
+.bulletin-card{
+    background:#F4F6F9;
+    padding:35px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.05);
+    transition:0.3s;
+}
+
+.bulletin-card:hover{
+    transform:translateY(-8px);
+}
+
+.pdf-icon{
+    font-size:40px;
+    margin-bottom:15px;
+}
+
+.bulletin-card h3{
+    color:#1F5FAF;
+    margin-bottom:5px;
+}
+
+.bulletin-card p{
+    font-size:14px;
+    margin-bottom:25px;
+    color:#555;
+}
+
+.open-btn{
+    display:inline-block;
+    padding:10px 25px;
+    border-radius:30px;
+    background:#1F5FAF;
+    color:white;
+    text-decoration:none;
+    font-weight:500;
+    transition:0.3s;
+}
+
+.open-btn:hover{
+    background:#2E86C1;
+}
+
+/* ===== MOBILE FIRST ===== */
+@media (max-width: 768px){
+
+    body{
+        background:#eef2f7;
+    }
+
+    .sms-grid{
+        display:flex;
+        flex-direction:column;
+        gap:20px;
+        padding:20px;
+    }
+
+    .sms-card{
+        width:100%;
+        border-radius:25px;
+        padding:25px 20px;
+        box-shadow:0 8px 25px rgba(0,0,0,0.08);
+    }
+
+    .sms-card h3{
+        font-size:1.1rem;
+    }
+
+    .sms-card p{
+        font-size:0.95rem;
+    }
+
+    .sms-btn{
+        width:100%;
+        padding:16px;
+        font-size:1rem;
+        border-radius:40px;
+    }
+}
+@media (max-width:768px){
+    .sms-modules{
+        padding-top:30px;
+    }
+
+    .sms-modules h2{
+        padding:0 20px;
+        font-size:1.4rem;
+    }
+
+    .sms-intro{
+        padding:0 20px;
+        font-size:0.95rem;
+    }
+}
+.sms-btn:active{
+    transform:scale(0.97);
+}
+
+/* ===== HEADER ===== */
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 30px;
+    background:white;
+    box-shadow:0 4px 15px rgba(0,0,0,0.05);
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo img{
+    height:40px;
+}
+
+.nav-menu{
+    display:flex;
+    gap:30px;
+}
+
+.nav-menu a{
+    text-decoration:none;
+    font-weight:600;
+    color:#1F2D3D;
+    transition:0.3s ease;
+}
+
+.nav-menu a:hover{
+    color:#1F5FAF;
+}
+
+@media (max-width:768px){
+
+    .header{
+        flex-direction:column;
+        gap:10px;
+        padding:20px;
+    }
+
+    .nav-menu{
+        width:100%;
+        justify-content:space-around;
+        gap:0;
+    }
+
+    .nav-menu a{
+        font-size:0.9rem;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header class="header">
+    
+    <div class="logo">
+        <img src="logo.png" alt="Sahar Group">
+    </div>
+
+    <nav class="nav-menu">
+        <a href="#home">Home</a>
+        <a href="#smsSection">SMS</a>
+        <a href="#bulletinsSection">Safety Bulletins</a>
+    </nav>
+
+</header>
+
+<section class="hero-video">
+    <video autoplay muted loop playsinline class="bg-video">
+        <source src="sahar-fachada.mp4" type="video/mp4">
+    </video>
+
+    <div class="overlay"></div>
+
+    <div class="hero-content">
+        <img src="logo.png" class="hero-logo" alt="Sahar Group Logo">
+
+        <h1>Welcome to Safety <br>Management System Portal.</h1>
+
+        <p>
+            This platform enables hazard reporting, emergency notifications,
+            safety bulletins distribution and continuous improvement of 
+            operational safety.
+        </p>
+
+        <button onclick="goToSMS()">Access Portal →</button>
+    </div>
+</section>
+
+<section id="smsSection" class="sms-modules">
+
+    <h2>Safety Management System</h2>
+    <p class="sms-intro">
+        Integrated platform for safety reporting, emergency response and operational risk management.
+    </p>
+
+    <div class="sms-grid">
+
+        <div class="sms-card emergency">
+            <h3>🚨 Emergency Notification</h3>
+            <p>Immediate reporting channel for critical operational events.</p>
+            <a href="https://forms.office.com/r/tXRdm1CijQ?origin=lprLink" 
+               target="_blank" 
+               class="sms-btn emergency-btn">
+               Report Emergency
+            </a>
+        </div>
+
+        <div class="sms-card">
+            <h3>📝 Hazard Report</h3>
+            <p>Confidential hazard and risk reporting system.</p>
+            <a href="https://forms.office.com/r/jnJFsnUQ4x?origin=lprLink" 
+               target="_blank" 
+               class="sms-btn">
+               Submit Report
+            </a>
+        </div>
+
+        <div class="sms-card">
+            <h3>📢 Safety Alert Bulletin</h3>
+            <p>Access latest internal and regulatory safety bulletins.</p>
+            <a href="#bulletinsSection" 
+               onclick="goToBulletins()" 
+               class="sms-btn">
+               View Bulletins
+            </a>
+        </div>
+
+        <div class="sms-card">
+            <h3>📂 SMS Documentation</h3>
+            <p>Manuals, ERP, procedures and risk assessment documents.</p>
+            <a href="#" class="sms-btn">
+               Access Documents
+            </a>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- SAFETY MANAGEMENT SYSTEM PAGE -->
+<section id="smsPage" class="hidden-page">
+
+    <div class="page-container">
+        <h1>Safety Management System</h1>
+
+        <p>
+            The Sahar Group SMS Portal enables hazard reporting,
+            emergency response coordination, safety performance monitoring,
+            and continuous operational risk management.
+        </p>
+
+        <div class="sms-features">
+            <div class="feature-box">
+                <h3>Just Culture Policy</h3>
+                <p>Employees are encouraged to report safety concerns without fear of retaliation.</p>
+            </div>
+
+            <div class="feature-box">
+                <h3>Emergency Response</h3>
+                <p>Immediate notification procedures for critical events.</p>
+            </div>
+
+            <div class="feature-box">
+                <h3>Safety Performance Monitoring</h3>
+                <p>Continuous tracking of risk indicators and operational safety metrics.</p>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section id="bulletinsSection" class="bulletins-section">
+
+    <h2>Safety Alert Bulletins (SAB)</h2>
+    <p class="bulletins-intro">
+        Official Safety Alert Bulletins issued under the Sahar Group Safety Management System.
+        All documents are available in PDF format.
+    </p>
+
+    <div class="bulletins-grid">
+
+        <div class="bulletin-card">
+            <div class="pdf-icon">📄</div>
+            <h3>SAB-001</h3>
+            <p>PHONE USE</p>
+            <a href="https://sahargroupaerospace-my.sharepoint.com/:b:/g/personal/sms_intern_sahar_aero/IQBGHd6H2jCjSbpAwRtBvNBIAa7G2yAwXjp4F2qY4XwMY4c?e=YL3f8s" 
+                target="_blank" class="open-btn">
+                Open PDF
+            </a>
+        </div>
+
+        <div class="bulletin-card">
+            <div class="pdf-icon">📄</div>
+            <h3>SAB-002</h3>
+            <p>MANDATORY USE SMS FORMS</p>
+            <a href="https://sahargroupaerospace-my.sharepoint.com/:b:/g/personal/sms_intern_sahar_aero/IQDA1etvg1TrTY0cZh-LYR9tAaUlcaPKABXsS-M_a3VtAfo?e=BWYxUM"
+                target="_blank" class="open-btn">
+                Open PDF
+            </a>
+        </div>
+
+        <div class="bulletin-card">
+            <div class="pdf-icon">📄</div>
+            <h3>SAB-003</h3>
+            <p>REPORT UNDER SMS</p>
+            <a href="https://sahargroupaerospace-my.sharepoint.com/:b:/g/personal/sms_intern_sahar_aero/IQAeCusIyHsRTJCby3KaZvSsAWoE7JbsvM4MWesa8SdGdXc?e=heLRAu"
+                target="_blank" class="open-btn">
+                Open PDF
+            </a>
+        </div>
+
+        <div class="bulletin-card">
+            <div class="pdf-icon">📄</div>
+            <h3>SAB-004</h3>
+            <p>MRO SUPPORT AREAS</p>
+            <a href="https://sahargroupaerospace-my.sharepoint.com/:b:/g/personal/sms_intern_sahar_aero/IQAfV4WzZ52DSrTzX-kmjF14AWBqfcbUsOEbrl0wy4BoglQ?e=7rL8G9"
+                target="_blank" class="open-btn">
+                Open PDF
+            </a>
+        </div>
+
+    </div>
+
+</section>
+
+<section id="home"></section>
+
+<!-- OPERATIONAL MODULES PAGE -->
+<section id="modulesPage" class="hidden-page">
+
+    <div class="page-container">
+        <h1>Operational Modules</h1>
+
+        <div class="modules-grid">
+
+            <div class="module-card">
+                <h3>🚨 Emergency Notification</h3>
+                <p>Immediate reporting of critical operational events.</p>
+            </div>
+
+            <div class="module-card">
+                <h3>📝 Hazard Reporting</h3>
+                <p>Confidential submission of hazards and incidents.</p>
+            </div>
+
+            <div class="module-card">
+                <h3>📢 Safety Bulletins</h3>
+                <p>Latest safety alert publications and internal notices.</p>
+            </div>
+
+            <div class="module-card">
+                <h3>📂 SMS Documentation</h3>
+                <p>Manuals, procedures and emergency response plans.</p>
+            </div>
+
+        </div>
+
+        <button class="primary-btn" onclick="goHome()">Return to Home</button>
+    </div>
+
+</section>
+
+<footer>
+    <p>© 2026 Sahar Group™ | Safety • Quality • Excellence</p>
+</footer>
+
+<script>
+function scrollToSection(){
+    document.getElementById("services").scrollIntoView({behavior:"smooth"});
+}
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.classList.add("visible");
+        }
+    });
+});
+
+document.querySelectorAll(".fade-in").forEach(el => {
+    observer.observe(el);
+});
+</script>
+
+<script>
+function goToSMS(){
+    document.getElementById("smsSection").scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+</script>
+
+<script>
+function goToBulletins(){
+    document.getElementById("bulletinsSection").scrollIntoView({
+        behavior:"smooth"
+    });
+}
+</script>
+</body>
+</html>
